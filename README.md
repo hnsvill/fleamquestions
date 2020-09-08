@@ -25,7 +25,7 @@ libraryDependencies ++= Seq(
   placed back into the Either `R => R1`
 * `eitherFlatMap` - Applies a function to items that are Right where only the right-hand value is passed and the result
   is a new either. `R => Either[L, R1]`
-* `eitherMapAsync`, `eitherMapAsyncUnordered`, `eitherFlatMapAsync`, `eitherFlatMapAsyncUnordered`,
+* `eitherMapAsync`, `eitherMapAsyncUnordered`, `eitherFlatMapAsync`,
   `eitherFlatMapAsyncUnordered` - Future based versions of `eitherMap` and `eitherFlatMap` that preserve item order or
   not.
 * `flatten` - On an Either turns a Right Iterable into individual Rights

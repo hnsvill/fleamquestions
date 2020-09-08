@@ -31,6 +31,13 @@ val config = ConfigFactory.parseString("""
 }""")
 ```
 
+// TODO: iHeart has taken over this project - https://github.com/iheartradio/ficus
+//  added dependency:
+```sbt
+val ficusVersion = "1.5.0"
+libraryDependencies += "com.iheart" %% "ficus" % "ficusVersion" //see latest version in the badge below
+```
+
 Now we can read this config using Ficus.
 ```scala
 import net.ceedubs.ficus.Ficus._
@@ -88,8 +95,18 @@ val pipeline2 =
 ```
 
 Now you could use this to define a stream directly our pass these to a `StreamDaemon`.
+https://doc.akka.io/docs/akka/2.4/scala/stream/stream-quickstart.html
 
 ```scala
+import akka.actor.ActorSystem
+import akka.stream.ActorMaterializer
+import akka.stream.scaladsl.Sink
+import com.nike.fleam.StreamDaemon
+import scala.util.Failure
+
+  implicit val system = ActorSystem("QuickStart")
+  implicit val materializer = ActorMaterializer()
+
   val daemon = new StreamDaemon("example daemon")
   daemon.start(
     source = source,
